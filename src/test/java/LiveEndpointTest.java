@@ -14,7 +14,6 @@ import static org.hamcrest.Matchers.*;
 public class LiveEndpointTest {
 
     private static Response response;
-
     @AfterEach
     public void setup() {
         System.out.println(response.asString());
@@ -67,6 +66,7 @@ public class LiveEndpointTest {
         response = given().get(Consts.BASE_URL + Consts.LIVE_ENDPOINT + Consts.ACCESS_KEY);
         response.then().time(lessThan(1000L));
     }
+
 
 
 }

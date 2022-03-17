@@ -52,7 +52,7 @@ public class ErrorMessagesTest {
     }
 
     @Test
-    public void error302Test () {
+    public void error302FutureDateTest () {
         response = given().get(Consts.BASE_URL+Consts.HISTORICAL_ENDPOINT +Consts.ACCESS_KEY+"&date=2023-01-02");
         System.out.println(response.asString());
         response.then().body("error.code", equalTo(302));
@@ -66,8 +66,8 @@ public class ErrorMessagesTest {
     }
 
     @Test
-    public void error302Before1999ConvertTest () {
-        response = given().get(Consts.BASE_URL+Consts.CONVERT_ENDPOINT +Consts.ACCESS_KEY+"&from=USD&to=GBP&date=1998-12-31");
+    public void error302InvalidDate () {
+        response = given().get(Consts.BASE_URL+Consts.HISTORICAL_ENDPOINT +Consts.ACCESS_KEY+"&date=1998-45-31");
         System.out.println(response.asString());
         response.then().body("error.code", equalTo(302));
     }
